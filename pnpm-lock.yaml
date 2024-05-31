@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@ai-sdk/openai':
-    specifier: ^0.0.17
-    version: 0.0.17(zod@3.23.8)
+    specifier: 0.0.18
+    version: 0.0.18(zod@3.23.8)
   ai:
-    specifier: ^3.1.17
-    version: 3.1.17(react@18.3.1)(solid-js@1.8.17)(svelte@4.2.17)(vue@3.4.27)(zod@3.23.8)
+    specifier: 3.1.21
+    version: 3.1.21(react@18.3.1)(solid-js@1.8.17)(svelte@4.2.17)(vue@3.4.27)(zod@3.23.8)
   next:
     specifier: 14.2.3
     version: 14.2.3(react-dom@18.3.1)(react@18.3.1)
@@ -20,6 +20,9 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.3.1(react@18.3.1)
+  zod:
+    specifier: 3.23.8
+    version: 3.23.8
 
 devDependencies:
   '@types/node':
@@ -49,8 +52,8 @@ devDependencies:
 
 packages:
 
-  /@ai-sdk/openai@0.0.17(zod@3.23.8):
-    resolution: {integrity: sha512-5Es+u9ICw23FZnRfRQLwn9AxkRcTDxGMFKcZjaLdj8suBeUd3B/CioUTNgXUTvfRCOPhkH/sbLrMyo746LkOAg==}
+  /@ai-sdk/openai@0.0.18(zod@3.23.8):
+    resolution: {integrity: sha512-5iJ+/mbns0uLbNpACMYGUONUqQmqGJYrPbQvmGC+XVD4DZLvyZqBi0NDoQguOrZTz6u5O7rl51o9PDO+bEtmcA==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.0.0
@@ -547,8 +550,8 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  /ai@3.1.17(react@18.3.1)(solid-js@1.8.17)(svelte@4.2.17)(vue@3.4.27)(zod@3.23.8):
-    resolution: {integrity: sha512-m1J3friKSvF20lV6UT38Zkraoc3ci3nmIcTpxVdFID7lmHc3KiqNjOsunNXHmRGKBZvTGuechYo84iBeieusXg==}
+  /ai@3.1.21(react@18.3.1)(solid-js@1.8.17)(svelte@4.2.17)(vue@3.4.27)(zod@3.23.8):
+    resolution: {integrity: sha512-s/3L2pqbeC1EwFS0u5kyw1amtC3KOXPWzRCmEcXAK23xdv5RLlxxK8juuvdIDgGplb/AgfkJ7BjIlbmPQTYu9g==}
     engines: {node: '>=18'}
     peerDependencies:
       openai: ^4.42.0

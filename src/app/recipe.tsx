@@ -1,7 +1,7 @@
 "use client";
-import { ReactElement, useState } from "react";
-import { readStreamableValue } from "ai/rsc";
 import { generateRecipe } from "@/app/action";
+import { useState } from "react";
+import DisplayRecipe from "./display-recipe";
 
 export default function Recipe() {
   const [recipe, setRecipe] = useState<{
@@ -9,8 +9,9 @@ export default function Recipe() {
   } | null>(null);
 
   async function handleGenerateRecipe() {
-    const recipeUI = await generateRecipe();
-    setRecipe(recipeUI);
+    setRecipe({
+      display: <DisplayRecipe recipe={await generateRecipe()} />,
+    });
   }
 
   return (

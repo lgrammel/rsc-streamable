@@ -1,38 +1,26 @@
 "use server";
-import { createAI, createStreamableUI, createStreamableValue } from "ai/rsc";
+import { createAI, createStreamableValue } from "ai/rsc";
 
-import { streamObject } from "ai";
-
-import { openai } from "@ai-sdk/openai";
-import DisplayRecipe from "@/app/display-recipe";
-import { PartialLasagna, recipeSchema } from "@/app/types";
-import { ReactNode } from "react";
 import { recipeAgent } from "@/app/receipe-agent";
+import { ReactNode } from "react";
+import { PartialLasagna } from "./types";
 
 export async function generateRecipe() {
-  const recipeUI = createStreamableUI();
+  const recipeStream = createStreamableValue<PartialLasagna>();
 
-  async function process() {
-    const objectStream = createStreamableValue<PartialLasagna>();
-    recipeUI.update(<DisplayRecipe recipe={objectStream.value} />);
-    await recipeAgent()
-      .then(async (partialObjectStream) => {
-        for await (const partialObject of partialObjectStream.partialObjectStream) {
-          if (partialObject.recipe) {
-            objectStream.update(partialObject);
-          }
+  recipeAgent()
+    .then(async (partialObjectStream) => {
+      for await (const partialObject of partialObjectStream.partialObjectStream) {
+        if (partialObject.recipe) {
+          recipeStream.update(partialObject);
         }
-      })
-      .finally(() => {
-        recipeUI.done();
-        objectStream.done();
-      });
-  }
-  process();
+      }
+    })
+    .finally(() => {
+      recipeStream.done();
+    });
 
-  return {
-    display: recipeUI.value,
-  };
+  return recipeStream.value;
 }
 
 export type UIState = Array<{
